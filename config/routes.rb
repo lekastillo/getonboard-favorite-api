@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   
-  resources :favorite_jobs, only: [:index, :create, :destroy]
+  resources :favorite_jobs, only: [:index, :show, :create, :destroy]
   
   root to: 'home#index'
   get 'home/index'
