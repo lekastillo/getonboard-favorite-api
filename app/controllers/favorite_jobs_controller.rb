@@ -1,8 +1,12 @@
 class FavoriteJobsController < ApplicationController
-  before_action :set_favorite_job, only: [:destroy]
+  before_action :set_favorite_job, only: [:show, :destroy]
   def index
     @favorite_jobs= FavoriteJob.all
     render json: @favorite_jobs
+  end
+
+  def show
+    render json: @favorite_job
   end
 
   # POST /favorite_jobs
