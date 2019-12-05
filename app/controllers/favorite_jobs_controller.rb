@@ -22,7 +22,12 @@ class FavoriteJobsController < ApplicationController
 
   # DELETE /favorite_jobs/id
   def destroy
-    @favorite_job.destroy
+    
+    if @favorite_job && @favorite_job.destroy
+      head :no_content
+    else
+      render json: [], status: :not_found
+    end
   end
 
   private
@@ -33,6 +38,6 @@ class FavoriteJobsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def favorite_job_params
-      params.require(:favorite_job).permit(:job_id)
+      params.require(:favorite_job).permit(:job_id, :title, :logo_url)
     end
 end
